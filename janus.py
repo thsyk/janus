@@ -1,22 +1,30 @@
 import random
 import json
+import click
 from pathlib import Path
 
 
-def open_database():
-    db = Path('database.json')
-    with open(db, 'r', encoding='utf-8') as file:
-        data = json.load(file)
-    return data
-
-def roll_the_dice(database):
+@click.command()
+@click.option('-s', '--short', is_flag=True, default=False, help='Generate shorter usernames')
+@click.option('-l', '--long', is_flag=True, default=False, help='Generate longer usernames')
+@click.option('-c', '--chars', default=25, type=int, help='Define max character length in username')
+@click.option('-n', '--number', default=10, type=int, help='Define the number of generated usernames')
+@click.option('--lower', is_flag=True, default=False, help='Print usernames in lowercase')
+@click.option('--upper', is_flag=True, default=False, help='Print usernames in UPPERCASE')
+@click.option('--mix', is_flag=True, default=False, help='Print usernames MiXeD')
+def roll_the_dice(short, long, chars, number, lower, upper, mix):
+    """Generate random usernames with JANUS 👺"""
+    # Fetch database
+    database = open_database()
+    # Assemble deck and text sources
     deck = list(database.keys())
     length = random.choice([2, 3, 4])
     # Define number of usernames to create
     usernames = []
-    usernames_count = 10
+    usernames_count=number
     for _x in range(1, usernames_count):
-        length = random.choice([2, 3, 4])
+        length = random.choice([2, 3]) if short else random.choice([2, 3, 4])
+        length = random.choice([4, 5]) if long else random.choice([2, 3, 4])
         depot = []
         while length > 0:
             dice = random.choice(deck)
@@ -24,9 +32,10 @@ def roll_the_dice(database):
             depot.append(result)
             length -= 1
         # Start mixing the generated parts of the username
-        username = shake_mixer(depot)
-        # Cut the mixed username in an appetizing length // Default: 25 chars
-        dice_cut = random.randint(6, 25)
+        username = shake_mixer(depot, lower, upper, mix)
+        # Cut the mixed username in an appetizing length
+        cut = 15 if short else chars
+        dice_cut = random.randint(6, cut)
         if len(username) > dice_cut and username[:dice_cut].endswith(('_', '-', '.')):
             dice_cut -= 1
             username = username[0:dice_cut]  
@@ -36,11 +45,18 @@ def roll_the_dice(database):
     # Send generated usernames to print
     print_output(usernames)
 
-def shake_mixer(depot):
-    # Defines the char with which the parts of the username are joined
+def shake_mixer(depot, lower, upper, mix):
+    # Defines the character with which the parts of the username are joined
     dice_join = random.choice(['', '.', '-', '_'])
     # Defines the style of the username (lowercase, uppercase etc.)
-    dice_style = random.choice(['lower', 'cap', 'upper', 'mix'])
+    if lower:
+        dice_style = 'lower'
+    elif upper:
+        dice_style = 'upper'
+    elif mix:
+        dice_style = 'mix'
+    else:
+        random.choice(['lower', 'cap', 'upper', 'mix'])
     if dice_style == 'lower':
         username = dice_join.join(random.sample(depot, len(depot))).lower()
     elif dice_style == 'cap':
@@ -58,10 +74,15 @@ def shake_mixer(depot):
         username = ''.join(username_updated)
     return username
 
+def open_database():
+    db = Path('database.json')
+    with open(db, 'r', encoding='utf-8') as file:
+        data = json.load(file)
+    return data
+
 def print_output(usernames):
     for name in usernames:
         print(name)
 
 if __name__ == '__main__':
-    database = open_database()
-    usernames = roll_the_dice(database)
+    roll_the_dice()
