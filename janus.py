@@ -22,7 +22,7 @@ def roll_the_dice(short, long, chars, number, lower, upper, mix):
     # Define number of usernames to create
     usernames = []
     usernames_count=number
-    for _x in range(1, usernames_count):
+    for _x in range(0, usernames_count):
         length = random.choice([2, 3]) if short else random.choice([2, 3, 4])
         length = random.choice([4, 5]) if long else random.choice([2, 3, 4])
         depot = []
@@ -56,7 +56,7 @@ def shake_mixer(depot, lower, upper, mix):
     elif mix:
         dice_style = 'mix'
     else:
-        random.choice(['lower', 'cap', 'upper', 'mix'])
+        dice_style = random.choice(['lower', 'cap', 'upper', 'mix'])
     if dice_style == 'lower':
         username = dice_join.join(random.sample(depot, len(depot))).lower()
     elif dice_style == 'cap':
