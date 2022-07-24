@@ -7,13 +7,13 @@ from pathlib import Path
 @click.command()
 @click.option('-s', '--short', is_flag=True, default=False, help='Generate shorter usernames')
 @click.option('-l', '--long', is_flag=True, default=False, help='Generate longer usernames')
-@click.option('-c', '--chars', default=25, type=int, help='Define max character length in username')
+@click.option('-c', '--chars', default=25, type=int, help='Define max character length of username')
 @click.option('-n', '--number', default=10, type=int, help='Define the number of generated usernames')
 @click.option('--lower', is_flag=True, default=False, help='Print usernames in lowercase')
 @click.option('--upper', is_flag=True, default=False, help='Print usernames in UPPERCASE')
 @click.option('--mix', is_flag=True, default=False, help='Print usernames MiXeD')
 def roll_the_dice(short, long, chars, number, lower, upper, mix):
-    """Generate random usernames with JANUS 👺"""
+    """Generate random usernames with JANUS 😶‍🌫️"""
     # Fetch database
     database = open_database()
     # Assemble deck and text sources
