@@ -5,7 +5,7 @@ from pathlib import Path
 
 def open_database():
     db = Path('database.json')
-    with open(db, 'r', encoding='utf8') as file:
+    with open(db, 'r', encoding='utf-8') as file:
         data = json.load(file)
     return data
 
