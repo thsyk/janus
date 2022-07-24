@@ -62,6 +62,6 @@ def print_output(usernames):
     for name in usernames:
         print(name)
 
-
-database = open_database()
-usernames = roll_the_dice(database)
+if __name__ == '__main__':
+    database = open_database()
+    usernames = roll_the_dice(database)
