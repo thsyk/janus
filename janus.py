@@ -7,12 +7,12 @@ from pathlib import Path
 @click.command()
 @click.option('-s', '--short', is_flag=True, default=False, help='Generate shorter usernames')
 @click.option('-l', '--long', is_flag=True, default=False, help='Generate longer usernames')
-@click.option('-c', '--chars', default=25, type=int, help='Define max character length of username')
-@click.option('-n', '--number', default=10, type=int, help='Define the number of generated usernames')
-@click.option('--lower', is_flag=True, default=False, help='Print usernames in lowercase')
-@click.option('--upper', is_flag=True, default=False, help='Print usernames in UPPERCASE')
+@click.option('-c', '--chars', default=25, type=int, help='Define max. character length of username (Default: 25)')
+@click.option('-n', '--number', default=10, type=int, help='Define the number of generated usernames (Default: 10)')
+@click.option('--low', is_flag=True, default=False, help='Print usernames in lowercase')
+@click.option('--up', is_flag=True, default=False, help='Print usernames in UPPERCASE')
 @click.option('--mix', is_flag=True, default=False, help='Print usernames MiXeD')
-def roll_the_dice(short, long, chars, number, lower, upper, mix):
+def roll_the_dice(short, long, chars, number, low, up, mix):
     """Generate random usernames with JANUS 😶‍🌫️"""
     # Fetch database
     database = open_database()
@@ -32,7 +32,7 @@ def roll_the_dice(short, long, chars, number, lower, upper, mix):
             depot.append(result)
             length -= 1
         # Start mixing the generated parts of the username
-        username = shake_mixer(depot, lower, upper, mix)
+        username = shake_mixer(depot, low, up, mix)
         # Cut the mixed username in an appetizing length
         cut = 15 if short else chars
         dice_cut = random.randint(6, cut)
@@ -45,13 +45,13 @@ def roll_the_dice(short, long, chars, number, lower, upper, mix):
     # Send generated usernames to print
     print_output(usernames)
 
-def shake_mixer(depot, lower, upper, mix):
+def shake_mixer(depot, low, up, mix):
     # Defines the character with which the parts of the username are joined
     dice_join = random.choice(['', '.', '-', '_'])
     # Defines the style of the username (lowercase, uppercase etc.)
-    if lower:
+    if low:
         dice_style = 'lower'
-    elif upper:
+    elif up:
         dice_style = 'upper'
     elif mix:
         dice_style = 'mix'
