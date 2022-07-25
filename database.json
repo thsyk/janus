@@ -80202,6 +80202,7 @@
     "Nhep",
     "Ni",
     "Nian",
+    "Niandra",
     "Niang",
     "Niau",
     "Niazi",
@@ -169909,6 +169910,12 @@
     "Rapier"
   ],
   "misc": [
+    "Unit",
+    "Unid",
+    "SPL",
+    "SSH",
+    "TCP",
+    "Unidad",
     "Hologram",
     "Haze",
     "Hazey",
@@ -173748,6 +173755,13 @@
     "Hurlbutite"
   ],
   "occupations": [
+    "Battlemage",
+    "Mage",
+    "Wizard",
+    "Necromancer",
+    "Neuromancer",
+    "Swordsman",
+    "Miner",
     "Spy",
     "Agent",
     "Detective",
