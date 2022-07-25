@@ -7,7 +7,7 @@
 Janus is a command line tool for a fast and easy creation of **non-boring** usernames. Lenght, style and number of created usernames is configureable.  Janus chooses randomly out of more than 174.000 database entries and combines them in various ways.
 
 ## Examples
-If you are looking for a generator that creates usernames like `MIRACLEFRUIT`, `AsIa.STiLeTtO` or`HearthRaptureAxe` you have finally found the right place. I have never found it. That's why Janus exists.
+If you are looking for a generator that creates usernames like `MIRACLEFRUIT`, `AsIa.STiLeTtO`, `HearthRaptureAxe` or `High-Kuh` you have finally found the right place. I have never found it. That's why Janus exists.
 
 ## Installation
 Requirements: Python > 3.8
