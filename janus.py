@@ -18,7 +18,6 @@ def roll_the_dice(short, long, chars, number, low, up, mix):
     database = open_database()
     # Assemble deck and text sources
     deck = list(database.keys())
-    length = random.choice([2, 3, 4])
     # Define number of usernames to create
     usernames = []
     usernames_count=number
