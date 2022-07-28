@@ -49,25 +49,8 @@ def shake_mixer(depot, low, up, mix):
     dice_join = random.choice(['', '.', '-', '_'])
     # Defines the style of the username (lowercase, uppercase etc.)
     if low:
-<<<<<<< HEAD
-        dice_style = 'lower'
-    elif up:
-        dice_style = 'upper'
-    elif mix:
-        dice_style = 'mix'
-    else:
-        dice_style = random.choice(['lower', 'cap', 'upper', 'mix'])
-    if dice_style == 'lower':
-        username = dice_join.join(random.sample(depot, len(depot))).lower()
-    elif dice_style == 'cap':
-        username = dice_join.join(random.sample(depot, len(depot)))
-    elif dice_style == 'upper':
-        username = dice_join.join(random.sample(depot, len(depot))).upper()
-    elif dice_style == 'mix':
-=======
         username = dice_join.join(random.sample(depot, len(depot))).lower()
     elif mix:
->>>>>>> dev
         username = dice_join.join(random.sample(depot, len(depot)))
         username_upper = [username[i] for i in range(0, len(username), 2)]
         username_lower = [username[i] for i in range(1, len(username), 2)]
@@ -76,13 +59,10 @@ def shake_mixer(depot, low, up, mix):
             username_updated.append(x.upper())
             username_updated.append(y)
         username = ''.join(username_updated)
-<<<<<<< HEAD
-=======
     elif up:
         username = dice_join.join(random.sample(depot, len(depot))).upper()
     else:
         username = dice_join.join(random.sample(depot, len(depot)))
->>>>>>> dev
     return username
 
 def open_database():
