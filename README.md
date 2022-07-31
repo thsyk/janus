@@ -28,7 +28,8 @@ $ cd Janus
 
 ## Usage
 
-Run Janus by simply starting the script: `$ pyhton3 janus.py <options>`. Help is available via `$ pyhton3 janus.py --help`.
+Run Janus by simply starting the script: `$ pyhton3 janus.py <options>`. <br><br>
+Help is available via `$ pyhton3 janus.py --help`.
 
 **Options**:<br>
 - ```-l, --long``` — Generate longer usernames<br>
