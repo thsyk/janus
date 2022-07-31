@@ -31,10 +31,6 @@ $ cd Janus
 Run Janus by simply starting the script: `$ pyhton3 janus.py <options>`. Help is available via `$ pyhton3 janus.py --help`.
 
 **Options**:<br>
-- ```-s, --short``` — Generate shorter usernames<br>
 - ```-l, --long``` — Generate longer usernames<br>
-- ```-c, --chars INTEGER``` — Define max. character length of username (Default: 25)<br>
 - ```-n, --number INTEGER``` — Define the number of generated usernames (Default: 10)<br>
-- ```--low``` — Print usernames in lowercase<br>
-- ```--up``` — Print usernames in UPPERCASE<br>
-- ```--mix``` — Print usernames MiXeD<br>
+- ```--style``` — Choose style of username: `low` = lowercase, `up` = UPPERCASE, `mix` = MiXeD, `cap` = In Small Caps<br>
